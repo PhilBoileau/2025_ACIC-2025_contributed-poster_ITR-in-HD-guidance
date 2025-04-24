@@ -144,7 +144,7 @@
 
   \column{0.333}
 
-  \myblock{Operating Characteristics Snapshot}{
+  \myblock{Results Snapshot}{
     \vspace{-1.5cm}
     \begin{tikzfigure}
       \includegraphics[width=0.29\textwidth]{figs/summary-plot.jpeg}
@@ -152,10 +152,27 @@
     \vspace{-1.0cm}
   }
 
-  \myblock{Guidance}{
-    \begin{itemize}
-      \itemsep2pt
-        \item First Item
+  \myblock{Practical Guidance}{
+
+    No estimator uniformly dominates others; tradeoffs must be made. Since rule
+    quality is generally of primary concern, our results indicate that
+    practitioners must choose between accurate interpretability and
+    computationally efficiency. We provide the following guidance:
+
+    \begin{itemize} \itemsep2pt
+
+    \item \textbf{High-quality and accurately interpretable:} The filtered
+      LASSO-based plug-in and AIPW-based estimators generally produce
+      high-quality ITR estimates while accurately recovering TEMs. These
+      estimators are computationally intensive, however.
+
+    \item \textbf{High-quality and computationally efficient:} The LASSO-based
+      plug-in estimator produces among the most high-quality rules in our
+      simulation studies, providing empirical evidence that it is robust to
+      model misspecification while being exceptionally computationally
+      efficient. This estimator's built-in feature selection capabilities should
+      not be used for TEM discovery, however.
+
     \end{itemize}
   }
 
