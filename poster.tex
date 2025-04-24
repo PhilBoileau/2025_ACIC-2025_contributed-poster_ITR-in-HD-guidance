@@ -62,7 +62,7 @@
             |p{0.1\textwidth} || p{0.3\textwidth}|
           }
           \hline
-          Estimator
+          CATE Estimator
           & Details \\
           \hline\hline
           Plug-In LASSO
@@ -107,13 +107,49 @@
   }
 
   \myblock{Simulated Data-Generating Processes}{
-    DGPs considered
+
+    Setting $p=500$, we define 16 DGPs using every possible combination of the
+    following factors:
+
+    \begin{equation*}
+      \resizebox{0.29\textwidth}{!}{$%
+        \begin{split}
+          \Sigma_{1} & = I_{500 \times 500} \\
+          \Sigma_{2} & = \text{Block diagonal} \\
+        \end{split}
+        \quad \times \quad
+        \begin{split}
+          \pi_{1}(W) & = \frac{1}{2} \\
+          \pi_{2}(W) & = \text{logit}^{-1}\left(\frac{W_{1} + W_{2} + W_{3} + W_{4}}{5}\right) \\
+        \end{split}
+        \quad\times\quad
+        \begin{split}
+          \mu_{1}(A, W) & = A + \gamma^{\top}W + (\delta^{(10)})^{\top}WA \\
+          \mu_{2}(A, W) & = A + \gamma^{\top}W + (\delta^{(50)})^{\top}WA \\
+          \mu_{3}(A, W) & = \gamma^{\top}W + 2\;\text{arctan}\left\{(\delta^{(10)})^{\top}WA\right\} \\
+          \mu_{4}(A, W) & = \gamma^{\top}W + 2\;\text{arctan}\left\{(\delta^{(50)})^{\top}WA\right\} \\
+        \end{split}$%
+      }
+    \end{equation*}
+
+    where $\gamma_{1} = \ldots = \gamma_{5} = 2$, $\gamma_{6} = \ldots =
+    \gamma_{500} = 0$, $\delta^{(10)}_{1} = \ldots = \delta^{(10)}_{10} = 2$,
+    $\delta^{(10)}_{11} = \ldots = \delta^{(10)}_{500} = 0$, $\delta^{(50)}_{1}
+    = \ldots = \delta^{(50)}_{50} = 1/2$, and $\delta^{(50)}_{51} = \ldots =
+    \delta^{(50)}_{500} = 0$. $\Sigma_{2}$ is constructed by randomly generating
+    $50$ positive definite square symmetric matrices with diagonal elements
+    equal to one.
+
   }
 
   \column{0.333}
 
-  \myblock{Numerical Experiments}{
-    Snapshot of results
+  \myblock{Operating Characteristics Snapshot}{
+    \vspace{-1.5cm}
+    \begin{tikzfigure}
+      \includegraphics[width=0.29\textwidth]{figs/summary-plot.jpeg}
+    \end{tikzfigure}
+    \vspace{-1.0cm}
   }
 
   \myblock{Guidance}{
