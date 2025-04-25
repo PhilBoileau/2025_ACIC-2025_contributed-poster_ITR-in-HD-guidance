@@ -5,7 +5,7 @@
 \usepackage{amsfonts}
 \usepackage{amsthm}
 \usepackage{graphicx}
-\usepackage{natbib}
+\usepackage[square,numbers]{natbib}
 \usepackage{url}
 \usepackage{booktabs}
 \usepackage{geometry}
@@ -44,8 +44,6 @@
 \tikzposterlatexaffectionproofoff
 \begin{document}
 \maketitle[width=34in]
-%% \node[anchor=west] at (TP@title.west) {\includegraphics[width=6cm]{logos/mcgill_sig_red}};
-%% \node[anchor=east] at (TP@title.east) {\includegraphics[width=6cm]{logos/cal}};
 
 
 \begin{columns}
@@ -59,12 +57,22 @@
     \end{itemize}
   }
 
+  \myblock{Operating Characteristics}{
+    \begin{itemize}
+      \itemsep2pt
+        \item First Item
+    \end{itemize}
+  }
+
   \column{0.334}
 
   \myblock{Estimators}{
 
-    The following conditional average treatment effect (CATE) estimators were
-    used to construct the ITR estimators:
+    The conditional average treatment effect (CATE) estimators in the table
+    below were used to construct ITR estimators. Filtered versions of these CATE
+    estimators relying on the treatment effect modifier variable importance
+    parameter methodology of \citet{boileauNonparametricFrameworkTreatment2025}
+    were used to define ITR estimators as well.
 
     \begin{tikzfigure}
       \centering
@@ -113,6 +121,9 @@
           \hline
       \end{tabular}
     \end{tikzfigure}
+
+
+
   }
 
   \myblock{Simulated Data-Generating Processes}{
@@ -167,9 +178,9 @@
 
   \column{0.333}
 
-  \myblock{Results Snapshot}{
+  \myblock{Results Summary}{
     \begin{tikzfigure}
-      \includegraphics[width=0.29\textwidth]{figs/summary-plot.jpeg}
+      \includegraphics[width=0.28\textwidth]{figs/summary-plot.jpeg}
     \end{tikzfigure}
   }
 
@@ -201,12 +212,25 @@
   }
 
   \mysmallblock{References}{
-    \vspace{-3em}
-    %% \bibliographystyle{unsrtnat}
-    %% \bibliography{refs}
-    \vspace{-1em}
+    \bibliographystyle{abbrvnat}
+    \bibliography{refs}
   }
 
+  \begin{subcolumns}
+    \subcolumn{0.8}
+
+    \mysmallblock{Funding}{
+
+      P.B. gratefully acknowledges the support of the Fonds de recherche du
+      Québec - Nature et technologies and the Natural Sciences and Engineering
+      Research Council of Canada.
+
+    }
+  \end{subcolumns}
+
+
 \end{columns}
+
+\node [above left, outer sep=2cm] at (bottomleft -| topright) {\includegraphics[width=6cm]{logos/qr-code}};
 
 \end{document}
