@@ -1,4 +1,4 @@
-\documentclass[25pt, a1paper, landscape, innermargin=-2in]{tikzposter}
+\documentclass[25pt, a1paper, landscape, innermargin=-3in]{tikzposter}
 
 % required packages
 \usepackage{amsmath}
@@ -11,11 +11,11 @@
 \usepackage{geometry}
 
 % set the appropriate paper size
-\geometry{papersize={42in,40in}}
+\geometry{papersize={40in,42in}}
 
 % compact bibliography
 \renewcommand{\bibsection}{}
-%% \setlength{\bibsep}{0pt plus 0.3ex}
+\setlength{\bibsep}{0pt plus 0.3ex}
 
 %% Available themes: see also
 %% https://bitbucket.org/surmann/tikzposter/downloads/themes.pdf
@@ -51,16 +51,51 @@
   \column{0.333}
 
   \myblock{Motivation}{
+
+  }
+
+  \myblock{Problem Formulation}{
+
+    Consider $n$ i.i.d.~observations $O = (W, A, Y)$ where $W$ is a $p$-length
+    random vector of pre-treatment covariates (and possible confounders), $A$ is
+    a binary treatment indicator, and $Y$ is the continuous outcome. Here, $n<p$
+    or $n \approx p$.
+
+    \vspace{0.3in}
+
+    We aim to estimate the ITR, defined as
+    \begin{equation*}
+      I(\mathbb{E}[Y|W, 1] - \mathbb{E}[Y|W, 0] > 0) \;,
+    \end{equation*}
+    where $\mathbb{E}[Y|W, 1] - \mathbb{E}[Y|W, 0]$ is the conditional average
+    treatment effect (CATE) under standard identifiability
+    conditions.
+
+  }
+
+  \myblock{Primary Objectives}{
     \begin{itemize}
-      \itemsep2pt
-        \item First Item
+        \item \textbf{Provide practical guidance to applied scientists on ITR
+          estimation in high-dimensional settings, and }
+        \item \textbf{Assess the impact of treatment effect modifier filtering
+          on ITR estimaton}
     \end{itemize}
   }
 
   \myblock{Operating Characteristics}{
     \begin{itemize}
-      \itemsep2pt
-        \item First Item
+        \item \textbf{Rule Quality:} An ITR is ``high-quality'' when its
+          expected outcome approaches that of the optimal rule. That is, the
+          rule approximately optimizes mean outcome in the population.
+
+        \item \textbf{Accurate Interpretability:} An ITR is accurately
+          interpretable when it recovers treatment effect modifiers reliably in
+          terms of the false discovery, true positive, and true negative rates.
+
+        \item \textbf{Computational Efficiency:} An ITR is computationally
+          efficient when it can be estimated quickly in serial with few
+          computational resources.
+
     \end{itemize}
   }
 
@@ -68,18 +103,16 @@
 
   \myblock{Estimators}{
 
-    The conditional average treatment effect (CATE) estimators in the table
-    below were used to construct ITR estimators. Filtered versions of these CATE
-    estimators relying on the treatment effect modifier variable importance
-    parameter methodology of \citet{boileauNonparametricFrameworkTreatment2025}
-    were used to define ITR estimators as well.
-
-    \vspace{-0.5in}
+    The CATE estimators in the table below were used to construct ITR
+    estimators. Filtered versions of these CATE estimators relying on the
+    treatment effect modifier variable importance parameter methodology of
+    \citet{boileauNonparametricFrameworkTreatment2025} were used to define ITR
+    estimators as well.
 
     \begin{tikzfigure}
       \centering
         \begin{tabular}{
-            |p{3in} || p{8in}|
+            |p{3in} || p{8.5in}|
           }
           \hline
           CATE Estimator
@@ -137,21 +170,16 @@
 
     ITR estimators were benchmarked on 16 data-generating processes with
     continuous outcomes and binary treatment assignments reflecting a diversity
-    of randomized and observational studies.
-
-    Realizations of random vector $O = (W, A, Y)$ were generated for each
-    data-generating process, where $W$ is a random vector of $500$ pre-treatment
-    covariates (and possible confounders), $A$ is a binary treatment indicator,
-    and $Y$ is the observed continuous outcome. Elements of $O$ are generated as
-    follows:
+    of randomized and observational studies. Realizations of random vector $O$
+    with $p=500$ were generated according to the data-generating process
+    template:
     \begin{align*}
       W & \sim N(0, \Sigma) \\
       A|W & \sim \text{Bernoulli}(\pi(W)) \\
       Y|W, A & \sim N(\mu(W, A), 1) \;.
     \end{align*}
-    Here, $\Sigma$ is some $500 \times 500$ covariance matrix, and $\pi(W) =
-    \mathbb{P}[A=1|W]$ and $\mu(W,A) \mathbb{E}[Y|W, A]$ are generic propensity
-    score and conditional expected outcome functions, respectively. Sixteen
+    Here, $\Sigma$ is some $500 \times 500$ covariance matrix,
+    $\pi(W)=\mathbb{P}[A=1|W]$, and $\mu(W,A) = \mathbb{E}[Y|W, A]$. Sixteen
     data-generating processes are defined using combinations of the following
     factors:
     \begin{equation*}
@@ -185,10 +213,15 @@
 
   \column{0.333}
 
-  \myblock{Results Summary}{
+  \myblock{Results Snapshot}{
+    \vspace{-0.5in}
+
     \begin{tikzfigure}
       \includegraphics[width=0.28\textwidth]{figs/summary-plot.jpeg}
     \end{tikzfigure}
+
+    \vspace{-0.2in}
+
   }
 
   \myblock{Practical Guidance}{
@@ -200,7 +233,7 @@
     guidance on this tradeoff when selecting an ITR estimator for
     high-dimensional data:
 
-    \begin{itemize} \itemsep2pt
+    \begin{itemize}
 
     \item \textbf{High-quality rules that are accurately interpretable:} The
       filtered LASSO-based plug-in and AIPW-based estimators generally produce
