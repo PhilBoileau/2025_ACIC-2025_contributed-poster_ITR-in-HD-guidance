@@ -15,7 +15,7 @@
 
 % compact bibliography
 \renewcommand{\bibsection}{}
-\setlength{\bibsep}{0pt plus 0.3ex}
+%% \setlength{\bibsep}{0pt plus 0.3ex}
 
 %% Available themes: see also
 %% https://bitbucket.org/surmann/tikzposter/downloads/themes.pdf
@@ -38,7 +38,7 @@
 
 % dictate default block options
 \newcommand{\myblock}[2]{\block[titleinnersep=2mm, linewidth=0.5mm]{#1}{#2}}
-\newcommand{\mysmallblock}[2]{\block[titleinnersep=1mm, linewidth=1mm, bodyinnersep=5mm, roundedcorners=12, ]{{\small #1}}{{\tiny#2\par}}}
+\newcommand{\mysmallblock}[2]{\block[titleinnersep=1mm, linewidth=1mm, bodyinnersep=5mm, roundedcorners=12, ]{{\small #1}}{{\scriptsize#2\par}}}
 
 % turn off
 \tikzposterlatexaffectionproofoff
@@ -84,40 +84,47 @@
           & Details \\
           \hline\hline
           Plug-In LASSO
-          & A plug-in estimator using the LASSO. \\
+          & A plug-in estimator using the LASSO \citep{tibshiraniRegressionShrinkageSelection1996}. \\
           \hline
           Plug-In XGBoost
-          & A plug-in estimator using XGBoost. \\
+          & A plug-in estimator using XGBoost \citep{chenXGBoostScalableTree2016}. \\
           \hline
           Modified Covariates LASSO
-          & A modified covariates estimator using the LASSO. The propensity
+          & A modified covariates estimator \citep{tianSimpleMethodEstimating2014} using the LASSO. The propensity
           score is estimated using the logistic LASSO. \\
           \hline
           Modified Covariates XGBoost
-          & A modified covariates estimator using XGBoost. The propensity
+          & A modified covariates estimator
+          \citep{tianSimpleMethodEstimating2014} using XGBoost. The propensity
           score is estimated using the logistic LASSO. \\
           \hline
           Augmented Modified Covariates LASSO
-          & An augmented modified covariates estimator using the LASSO. The propensity
+          & An augmented modified covariates estimator
+          \citep{tianSimpleMethodEstimating2014} using the LASSO. The propensity
           score is estimated using the logistic LASSO. \\
           \hline
           Augmented Modified Covariates XGBoost
-          & An augmented modified covariates estimator using XGBoost. The propensity
+          & An augmented modified covariates estimator
+          \citep{tianSimpleMethodEstimating2014} using XGBoost. The propensity
           score is estimated using the logistic LASSO. \\
           \hline
           AIPW-based LASSO
-          & An AIPW-based estimator using Super Learners to estimate the
+          & An AIPW-based estimator
+          \citep{luedtkeSuperLearningOptimalDynamic2016} using Super Learners
+          \citep{laanSuperLearner2007} to estimate the
           expected conditional outcome and the propensity score. Differences
           in predicted pseudo-outcomes are modelled using the LASSO. \\
           \hline
           AIPW-based Super Learner
-          & An AIPW-based estimator using Super Learners to estimate the
+          & An AIPW-based estimator
+          \citep{luedtkeSuperLearningOptimalDynamic2016} using Super Learners to estimate the
           expected conditional outcome and the propensity score. Differences
           in predicted pseudo-outcomes are modelled using a Super Learner. \\
           \hline
           Causal Random Forests
-          & A causal random forest estimator using cross-validation for
-          hyperparameter selection. \\
+          & A causal random forest estimator
+          \citep{wagerEstimationInferenceHeterogeneous2018} using
+          cross-validation for hyperparameter selection. \\
           \hline
       \end{tabular}
     \end{tikzfigure}
@@ -212,7 +219,7 @@
   }
 
   \mysmallblock{References}{
-    \bibliographystyle{abbrvnat}
+    \bibliographystyle{unsrtnat}
     \bibliography{refs}
   }
 
