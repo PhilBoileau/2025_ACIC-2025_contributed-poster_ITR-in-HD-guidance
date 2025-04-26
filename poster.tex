@@ -52,33 +52,39 @@
 
   \myblock{Motivation}{
 
-  }
+    Precision medicine promises to tailor patients' treatments to optimize their
+    outcomes. Patients' pre-treatment covariates, like age, sex-at-birth, and
+    genetic profiles, influence therapies' efficacy, safety, and tolerability
+    outcomes. These patient characteristics, known as \textbf{treatment effect
+      modifiers, are used to derive individualized treatment rules (ITRs) that
+      guide personalized treatment decisions}.
 
-  \myblock{Problem Formulation}{
+    \vspace{0.1in}
 
-    Consider $n$ i.i.d.~observations $O = (W, A, Y)$ where $W$ is a $p$-length
-    random vector of pre-treatment covariates (and possible confounders), $A$ is
-    a binary treatment indicator, and $Y$ is the continuous outcome. Here, $n<p$
-    or $n \approx p$.
+    While numerous methods can successfully estimate ITRs in traditional
+    asymptotic settings, \textbf{learning ITRs from high-dimensional data with
+      more pre-treatment covariates than patients --- a common occurrence in
+      modern clinical data --- is challenging}. ITR estimators developed for
+    such data rely on simplifying assumptions. Recent advances in
+      treatment effect modifier detection may help.
 
-    \vspace{0.3in}
+    \vspace{0.1in}
 
-    We aim to estimate the ITR, defined as
-    \begin{equation*}
-      I(\mathbb{E}[Y|W, 1] - \mathbb{E}[Y|W, 0] > 0) \;,
-    \end{equation*}
-    where $\mathbb{E}[Y|W, 1] - \mathbb{E}[Y|W, 0]$ is the conditional average
-    treatment effect (CATE) under standard identifiability
-    conditions.
+    A comparison of available methods has not been performed. Nor has an
+    evaluation of these methods' sensitivity to assumption violations. As such,
+    \textbf{selecting an appropriate ITR estimation strategy for
+      high-dimensional settings is challenging for applied biomedical
+      researchers}. Capacity for precision medicine is diminished as a result.
 
   }
 
   \myblock{Primary Objectives}{
     \begin{itemize}
-        \item \textbf{Provide practical guidance to applied scientists on ITR
-          estimation in high-dimensional settings, and }
-        \item \textbf{Assess the impact of treatment effect modifier filtering
-          on ITR estimaton}
+        \item \textbf{Provide guidance based on practical operating
+          characteristics to applied scientists for ITR estimation in high
+          dimensions.}
+        \item \textbf{Determine whether treatment effect modifier detection
+          procedures improve ITR estimation in high-dimensions.}
     \end{itemize}
   }
 
@@ -99,6 +105,30 @@
     \end{itemize}
   }
 
+  \myblock{Problem Formulation}{
+
+    Consider $n$ i.i.d.~observations $O = (W, A, Y)$ where $W$ is a $p$-length
+    random vector of pre-treatment covariates (and possible confounders) where
+    $p \approx n$ or $p > n$, $A$ is a binary treatment indicator, and $Y$ is
+    the continuous outcome.
+
+    \vspace{0.1in}
+
+    We aim to estimate the ITR, defined as
+    \begin{equation*}
+      I(\mathbb{E}[Y|W, 1] - \mathbb{E}[Y|W, 0] > 0) \;,
+    \end{equation*}
+    where $\mathbb{E}[Y|W, 1] - \mathbb{E}[Y|W, 0]$ is the conditional average
+    treatment effect (CATE) under standard identifiability
+    conditions.
+
+  }
+
+  \mysmallblock{References}{
+    \bibliographystyle{unsrtnat}
+    \bibliography{refs}
+  }
+
   \column{0.334}
 
   \myblock{Estimators}{
@@ -106,8 +136,8 @@
     The CATE estimators in the table below were used to construct ITR
     estimators. Filtered versions of these CATE estimators relying on the
     treatment effect modifier variable importance parameter methodology of
-    \citet{boileauNonparametricFrameworkTreatment2025} were used to define ITR
-    estimators as well.
+    \citet{boileauNonparametricFrameworkTreatment2025} were used to construct
+    ITR estimators as well.
 
     \begin{tikzfigure}
       \centering
@@ -235,13 +265,13 @@
 
     \begin{itemize}
 
-    \item \textbf{High-quality rules that are accurately interpretable:} The
+    \item \textbf{High-quality ITRs that are accurately interpretable:} The
       filtered LASSO-based plug-in and AIPW-based estimators generally produce
       high-quality ITR estimates while accurately recovering TEMs. These
       estimators are computationally intensive, however. The computational
       burden might be lestned by parallelizing the estimation procedure.
 
-    \item \textbf{High-quality rules that require few computational resources:}
+    \item \textbf{High-quality ITRs that require few computational resources:}
       The LASSO-based plug-in estimator produces among the most high-quality
       rules in our simulation studies, providing empirical evidence that it is
       robust to model misspecification while being exceptionally computationally
@@ -249,11 +279,6 @@
       not be used for TEM discovery, however.
 
     \end{itemize}
-  }
-
-  \mysmallblock{References}{
-    \bibliographystyle{unsrtnat}
-    \bibliography{refs}
   }
 
   \begin{subcolumns}
