@@ -198,19 +198,19 @@
 
   \myblock{Simulated Data-Generating Processes}{
 
-    \textbf{ITR estimators were benchmarked on 16 data-generating processes} with
-    continuous outcomes and binary treatment assignments reflecting a diversity
-    of randomized and observational studies. Realizations of random vector $O$
-    with $p=500$ were generated according to the data-generating process
-    template:
+    \textbf{ITR estimators were benchmarked in 16 data-generating processes}
+    with continuous outcomes and binary treatment assignments \textbf{reflecting
+      a diversity of randomized and observational studies}. Realizations of
+    random vector $O$ with $p=500$ were generated according to the following
+    data-generating process template:
     \begin{align*}
       W & \sim N(0, \Sigma) \\
       A|W & \sim \text{Bernoulli}(\pi(W)) \\
       Y|W, A & \sim N(\mu(W, A), 1) \;.
     \end{align*}
     Here, $\Sigma$ is some $500 \times 500$ covariance matrix,
-    $\pi(W)=\mathbb{P}[A=1|W]$, and $\mu(W,A) = \mathbb{E}[Y|W, A]$. Sixteen
-    data-generating processes are defined using combinations of the following
+    $\pi(W)=\mathbb{P}[A=1|W]$, and $\mu(W,A) = \mathbb{E}[Y|W, A]$.
+    Data-generating processes are defined using combinations of the following
     factors:
     \begin{equation*}
       \begin{split}
@@ -247,7 +247,7 @@
     \vspace{-0.5in}
 
     \begin{tikzfigure}
-      \includegraphics[width=0.28\textwidth]{figs/summary-plot.jpeg}
+      \includegraphics[width=0.26\textwidth]{figs/summary-plot.jpeg}
     \end{tikzfigure}
 
     \vspace{-0.2in}
