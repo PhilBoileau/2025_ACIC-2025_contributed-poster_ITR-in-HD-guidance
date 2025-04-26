@@ -135,9 +135,9 @@
 
     The CATE estimators in the table below were used to construct ITR
     estimators. Filtered versions of these CATE estimators relying on the
-    treatment effect modifier variable importance parameter methodology of
-    \citet{boileauNonparametricFrameworkTreatment2025} were used to construct
-    ITR estimators as well.
+    treatment effect modifier variable importance parameter (TEM-VIP)
+    methodology of \citet{boileauNonparametricFrameworkTreatment2025} were used
+    to construct ITR estimators as well.
 
     \begin{tikzfigure}
       \centering
@@ -259,24 +259,23 @@
     \textbf{No estimator uniformly dominates others across all operating
       characteristics; tradeoffs must be made.} Since rule quality is generally
     of primary concern, practitioners must choose between accurate
-    interpretability and computationally efficiency. We provide the following
-    guidance on this tradeoff when selecting an ITR estimator for
-    high-dimensional data:
+    interpretability and computationally efficiency:
 
     \begin{itemize}
 
     \item \textbf{High-quality ITRs that are accurately interpretable:} The
-      filtered LASSO-based plug-in and AIPW-based estimators generally produce
-      high-quality ITR estimates while accurately recovering TEMs. These
-      estimators are computationally intensive, however. The computational
-      burden might be lestned by parallelizing the estimation procedure.
+      \textbf{TEM-VIP-filtered plug-in LASSO and AIPW-based estimators}
+      generally produce high-quality ITR estimates while accurately recovering
+      treatment effect modifiers. These estimators are computationally
+      intensive, however. The computational burden might be lessened by
+      parallelizing the estimation procedure.
 
     \item \textbf{High-quality ITRs that require few computational resources:}
-      The LASSO-based plug-in estimator produces among the most high-quality
+      The \textbf{plug-in LASSO estimator} produces among the most high-quality
       rules in our simulation studies, providing empirical evidence that it is
       robust to model misspecification while being exceptionally computationally
       efficient. This estimator's built-in feature selection capabilities should
-      not be used for TEM discovery, however.
+      not be used for treatment effect modifier discovery, however.
 
     \end{itemize}
   }
