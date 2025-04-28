@@ -34,7 +34,7 @@
 % title information
 \title{Guidance on Individualized Treatment Rule Estimation in High Dimensions}
 \author{Philippe Boileau$^1$, Ning Leng$^2$, Sandrine Dudoit$^3$}
-\institute{$^1$McGill University; $^2$Genentech Inc; $^3$University of California, Berkeley}
+\institute{$^1$McGill University; $^2$Genentech, Inc.; $^3$University of California, Berkeley}
 
 % dictate default block options
 \newcommand{\myblock}[2]{\block[titleinnersep=2mm, linewidth=0.5mm]{#1}{#2}}
@@ -54,10 +54,10 @@
 
     Precision medicine promises to tailor patients' treatments to optimize their
     outcomes. Patients' pre-treatment covariates, like age, sex-at-birth, and
-    genetic profiles, influence therapies' efficacy, safety, and tolerability
-    outcomes. These patient characteristics, known as \textbf{treatment effect
-      modifiers, are used to derive individualized treatment rules (ITRs) that
-      guide personalized treatment decisions}.
+    genetic profiles, influence therapies' efficacy, safety, and tolerability.
+    These patient characteristics, known as \textbf{treatment effect modifiers,
+      are used to derive individualized treatment rules (ITRs) that guide
+      personalized treatment decisions}.
 
     \vspace{0.1in}
 
@@ -70,11 +70,12 @@
 
     \vspace{0.1in}
 
-    A comparison of available methods has not been performed. Nor has an
-    evaluation of these methods' sensitivity to assumption violations. As such,
-    \textbf{selecting an appropriate ITR estimation strategy for
-      high-dimensional settings is challenging for applied biomedical
-      researchers}. Capacity for precision medicine is diminished as a result.
+    A comparison of ITR estimation procedures in high-dimensional settings has
+    not been performed. Nor has an evaluation of these methods' sensitivities to
+    assumption violations. As such, \textbf{selecting an appropriate ITR
+      estimation strategy for high-dimensional settings is challenging for
+      applied biomedical researchers}. Capacity for precision medicine is
+    diminished as a result.
 
   }
 
@@ -84,7 +85,7 @@
           characteristics to applied scientists for ITR estimation in high
           dimensions.}
         \item \textbf{Determine whether treatment effect modifier detection
-          procedures improve ITR estimation in high-dimensions.}
+          procedures improve ITR estimation in high dimensions.}
     \end{itemize}
   }
 
@@ -96,7 +97,7 @@
 
         \item \textbf{Accurate Interpretability:} An ITR is accurately
           interpretable when it recovers treatment effect modifiers reliably in
-          terms of the false discovery, true positive, and true negative rates.
+          terms of the false discovery rate (FDR) and true positive rate (TPR).
 
         \item \textbf{Computational Efficiency:} An ITR is computationally
           efficient when it can be estimated quickly in serial with few
@@ -149,42 +150,43 @@
           & Details \\
           \hline\hline
           Plug-In LASSO
-          & A plug-in estimator using the LASSO \citep{tibshiraniRegressionShrinkageSelection1996}. \\
+          & A plug-in estimator using LASSO \citep{tibshiraniRegressionShrinkageSelection1996}. \\
           \hline
           Plug-In XGBoost
           & A plug-in estimator using XGBoost \citep{chenXGBoostScalableTree2016}. \\
           \hline
           Modified Covariates LASSO
-          & A modified covariates estimator \citep{tianSimpleMethodEstimating2014} using the LASSO. The propensity
-          score is estimated using the logistic LASSO. \\
+          & A modified covariates estimator
+          \citep{tianSimpleMethodEstimating2014} using LASSO. The propensity
+          score is estimated using logistic LASSO. \\
           \hline
           Modified Covariates XGBoost
           & A modified covariates estimator
           \citep{tianSimpleMethodEstimating2014} using XGBoost. The propensity
-          score is estimated using the logistic LASSO. \\
+          score is estimated using logistic LASSO. \\
           \hline
           Augmented Modified Covariates LASSO
           & An augmented modified covariates estimator
-          \citep{tianSimpleMethodEstimating2014} using the LASSO. The propensity
-          score is estimated using the logistic LASSO. \\
+          \citep{tianSimpleMethodEstimating2014} using LASSO. The propensity
+          score is estimated using logistic LASSO. \\
           \hline
           Augmented Modified Covariates XGBoost
           & An augmented modified covariates estimator
           \citep{tianSimpleMethodEstimating2014} using XGBoost. The propensity
-          score is estimated using the logistic LASSO. \\
+          score is estimated using logistic LASSO. \\
           \hline
           AIPW-based LASSO
           & An AIPW-based estimator
           \citep{luedtkeSuperLearningOptimalDynamic2016} using Super Learners
           \citep{laanSuperLearner2007} to estimate the
           expected conditional outcome and the propensity score. Differences
-          in predicted pseudo-outcomes are modelled using the LASSO. \\
+          in predicted pseudo-outcomes are modeled using LASSO. \\
           \hline
           AIPW-based Super Learner
           & An AIPW-based estimator
           \citep{luedtkeSuperLearningOptimalDynamic2016} using Super Learners to estimate the
           expected conditional outcome and the propensity score. Differences
-          in predicted pseudo-outcomes are modelled using a Super Learner. \\
+          in predicted pseudo-outcomes are modeled using a Super Learner. \\
           \hline
           Causal Random Forests
           & A causal random forest estimator
